@@ -1,9 +1,9 @@
-import Map from "./components/table/Map";
+import PersonalizedMap from "./components/PersonalizedMap";
 
 function App() {
   return (
     <div > 
-      <Map/>
+      <PersonalizedMap/>
     </div>
   );
 }
