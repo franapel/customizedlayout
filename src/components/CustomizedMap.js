@@ -103,8 +103,6 @@ const CustomizedMap = () => {
                     <Table tableData={tablesByNumber[22]} doubleHorizontal style={{ marginTop: 25 }} />
                     <div style={{ height: 40, width: 80, backgroundColor: "brown", borderRadius: "8%", marginTop: 25 }} />
                     <Table tableData={tablesByNumber[21]} doubleHorizontal style={{ marginTop: 25 }} />
-                    <div style={{ height: 40, width: 80, backgroundColor: "brown", borderRadius: "8%", marginTop: 25 }} />
-                    <Table tableData={tablesByNumber[1]} doubleHorizontal style={{ marginTop: 25 }} />
                     <div style={{ height: 50, width: 80, backgroundColor: "gray", borderRadius: "8%", marginTop: 25 }} >
                         <p style={{ margin: 0, lineHeight: "25px", fontSize: 13, color: "white", textAlign: "center" }}>
                             MESAS NO HABITABLES
