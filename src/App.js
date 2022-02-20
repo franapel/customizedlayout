@@ -1,9 +1,9 @@
-import PersonalizedMap from "./components/PersonalizedMap";
+import CustomizedMap from "./components/CustomizedMap";
 
 function App() {
   return (
     <div > 
-      <PersonalizedMap/>
+      <CustomizedMap/>
     </div>
   );
 }

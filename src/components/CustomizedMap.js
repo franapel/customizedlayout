@@ -1,6 +1,6 @@
-import { makeStyles } from "@material-ui/styles"
-import Table from "./Table"
-import tablesFromData from "../data/tables"
+import { makeStyles } from "@material-ui/styles";
+import Table from "./Table";
+import tablesFromData from "../data/tables";
 
 const useStyles = makeStyles({
     container: {
@@ -53,10 +53,12 @@ const useStyles = makeStyles({
 });
 
 
-const PersonalizedMap = () => {
+const CustomizedMap = () => {
 
     const classes = useStyles();
 
+    // transformar array de mesas en un objeto que tenga como keys 
+    // el numero de la mesa y como valor la mesa con sus atributos
     const tablesByNumber = tablesFromData.reduce((map, table) => {
         map[table.number] = table;
         return map;
@@ -123,10 +125,9 @@ const PersonalizedMap = () => {
                 </div>
             </div>
 
-
         </div>
 
     );
 };
 
-export default PersonalizedMap;
+export default CustomizedMap;
