@@ -1,9 +1,9 @@
-import CustomizedMap from "./components/CustomizedMap";
+import DraggableMap from "./components/DraggableMap";
 
 function App() {
   return (
     <div > 
-      <CustomizedMap/>
+      <DraggableMap/>
     </div>
   );
 }
