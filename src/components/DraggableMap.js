@@ -26,6 +26,7 @@ const useStyles = makeStyles({
     display: "flex",
     flexDirection: "column",
     justifyContent: "space-between",
+    gap: 10,
   },
   tableContainer: {
     width: "fit-content",
@@ -74,7 +75,6 @@ export default function DraggableMap() {
       x: draggableNode.x,
     };
     setTables(newTables);
-
     const newEditable = { ...editable, hasChanges: true };
     setEditable(newEditable);
   };
@@ -89,9 +89,7 @@ export default function DraggableMap() {
       return !table.newAdded;
     });
     setTables(newTables);
-
     setEditable({ label: "Editar Mapa", isTrue: false, hasChanges: false });
-
     setMapKey(mapKey !== "keyone" ? "keyone" : "keytwo");
   };
 
@@ -102,7 +100,6 @@ export default function DraggableMap() {
       table.newPosition = undefined;
       delete table.newAdded;
     });
-
     const saveTables = async () => {
       await fetch(API_URL, {
         method: "POST",
@@ -113,9 +110,18 @@ export default function DraggableMap() {
       });
     };
     saveTables();
-
     setTables(newTables);
     setEditable({ label: "Editar Mapa", isTrue: false, hasChanges: false });
+  };
+
+  const handleEraseMap = () => {
+    const deleteTables = async () => {
+      await fetch(API_URL, {
+        method: "DELETE",
+      });
+    };
+    deleteTables();
+    setTables([]);
   };
 
   return (
@@ -145,6 +151,15 @@ export default function DraggableMap() {
             Agregar mesa
           </Button>
         )}
+
+        <Button
+          variant="contained"
+          color="error"
+          onClick={handleEraseMap}
+          disabled={!tables}
+        >
+          Borrar Mapa
+        </Button>
       </div>
 
       <div key={mapKey} className={classes.mapContainer}>
