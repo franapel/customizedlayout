@@ -33,6 +33,8 @@ const useStyles = makeStyles({
   },
 });
 
+const API_URL = process.env.REACT_APP_API_URL || "http://localhost:8080";
+
 export default function DraggableMap() {
   const classes = useStyles();
 
@@ -58,7 +60,7 @@ export default function DraggableMap() {
 
   useEffect(() => {
     const fetchTables = async () => {
-      const data = await fetch("http://localhost:8080");
+      const data = await fetch(API_URL);
       const tables = await data.json();
       setTables(tables);
     };
@@ -94,7 +96,7 @@ export default function DraggableMap() {
   };
 
   const handleSaveChanges = () => {
-    const newTables = [...tables]
+    const newTables = [...tables];
     newTables.forEach((table) => {
       if (table.newPosition) table.position = table.newPosition;
       table.newPosition = undefined;
@@ -102,7 +104,7 @@ export default function DraggableMap() {
     });
 
     const saveTables = async () => {
-      await fetch("http://localhost:8080", {
+      await fetch(API_URL, {
         method: "POST",
         body: JSON.stringify(newTables),
         headers: {
@@ -111,7 +113,7 @@ export default function DraggableMap() {
       });
     };
     saveTables();
-    
+
     setTables(newTables);
     setEditable({ label: "Editar Mapa", isTrue: false, hasChanges: false });
   };
