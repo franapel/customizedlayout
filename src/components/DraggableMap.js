@@ -125,6 +125,7 @@ export default function DraggableMap() {
           variant="contained"
           color="secondary"
           onClick={!editable.isTrue ? handleEditMap : handleDiscardChanges}
+          disabled={!tables}
         >
           {editable.label}
         </Button>
