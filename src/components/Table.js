@@ -14,25 +14,26 @@ const useStyles = makeStyles({
   table: {
     height: 40,
     width: 40,
-    borderRadius: "8%",
   },
-  table_name: {
+  table_text: {
     margin: 0,
     position: "absolute",
     top: "50%",
     left: "50%",
-    transform: "translate(-50%, -50%)",
+    transform: "translate(-50%, -55%)",
     fontSize: 20,
+    fontWeight: 700,
     color: "white",
+    textShadow:
+      "-1px 1px 0 #000, 1px 1px 0 #000, 1px -1px 0 #000, -1px -1px 0 #000;",
   },
 });
 
-const Table = ({ tableData, measures }) => {
+const Table = ({ tableData }) => {
   const classes = useStyles();
+  const { measures } = tableData;
 
-  if (!measures) measures = { x: 1, y: 1 };
-
-  let fontSize = 15;
+  let fontSize = 20;
 
   if (measures.x === 1 && measures.y === 1) fontSize *= 1.5;
   else if (measures.x > measures.y) fontSize *= measures.x;
@@ -49,6 +50,7 @@ const Table = ({ tableData, measures }) => {
                 style={{
                   backgroundColor:
                     tableData.state === "free" ? "mediumseagreen" : "steelblue",
+                  borderRadius: tableData.shape === "rectangle" ? "8%" : "100%",
                 }}
                 key={key + ";" + key2}
               />
@@ -56,7 +58,7 @@ const Table = ({ tableData, measures }) => {
           </div>
         );
       })}
-      <p className={classes.table_name} style={{ fontSize }}>
+      <p className={classes.table_text} style={{ fontSize }}>
         {tableData.number}
       </p>
     </div>
